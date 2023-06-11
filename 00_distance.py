@@ -13,7 +13,6 @@ sites = {
 # расстояние на координатной сетке - корень из (x1 - x2) ** 2 + (y1 - y2) ** 2
 distances = {}
 
-# sites_keys = sites.keys()
 for city in sites.keys():
     coordinates = sites[city]
     city_coordinate_x, city_coordinate_y = coordinates[0], coordinates[1]
@@ -28,7 +27,3 @@ for city in sites.keys():
             distances[distance_key] = distance
 
 print(distances)
-
-
-
-
