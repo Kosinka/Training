@@ -20,7 +20,15 @@ violator_songs_list = [
 # Обратите внимание, что делать много вычислений внутри print() - плохой стиль.
 # Лучше заранее вычислить необходимое, а затем в print(xxx, yyy, zzz)
 
-
+duration = 0.0
+for song in violator_songs_list:
+    if song[0] == 'Enjoy the Silence':
+        duration += song[1]
+    elif song[0] == 'Halo':
+        duration += song[1]
+    elif song[0] == 'Clean':
+        duration += song[1]
+print('Три песни звучат: ' + str(round(duration, 2)) + ' минут.')
 
 # Есть словарь песен группы Depeche Mode
 violator_songs_dict = {
@@ -38,4 +46,12 @@ violator_songs_dict = {
 # распечатайте общее время звучания трех песен: 'Sweetest Perfection', 'Policy of Truth' и 'Blue Dress'
 #   А другие три песни звучат ХХХ минут
 
-# TODO здесь ваш код
+duration = 0.0
+for song in violator_songs_dict.keys():
+    if song == 'Sweetest Perfection':
+        duration += violator_songs_dict['Sweetest Perfection']
+    elif song == 'Policy of Truth':
+        duration += violator_songs_dict['Policy of Truth']
+    elif song == 'Blue Dress':
+        duration += violator_songs_dict['Blue Dress']
+print('А другие три песни звучат: ' + str(round(duration, 2)) + ' минут.')
