@@ -10,4 +10,10 @@
 
 a, b = 179, 37
 
-# TODO здесь ваш код
+iteration = a
+result = 0
+while iteration > 0:
+    iteration -= b
+    if iteration > 0:
+        result += 1
+print("Целочисленное деление ", a, "на ", b, " дает: ", result)
