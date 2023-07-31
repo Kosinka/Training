@@ -1,6 +1,25 @@
 # -*- coding: utf-8 -*-
 
 import simple_draw as sd
+import random
+import time
+
+sd.resolution = (800, 800)
+
+default_color = sd.COLOR_RED
+random_value = 50
+triangle_start_draw_position_x = 100
+triangle_start_draw_position_y = 100
+square_start_draw_position_x = 700
+square_start_draw_position_y = 700
+pentagon_start_draw_position_x = 100
+pentagon_start_draw_position_y = 600
+hexagon_start_draw_position_x = 600
+hexagon_start_draw_position_y = 100
+triangle_start_draw_position = sd.get_point(triangle_start_draw_position_x, triangle_start_draw_position_y)
+square_start_draw_position = sd.get_point(square_start_draw_position_x, square_start_draw_position_y)
+pentagon_start_draw_position = sd.get_point(pentagon_start_draw_position_x, pentagon_start_draw_position_y)
+hexagon_start_draw_position = sd.get_point(hexagon_start_draw_position_x, hexagon_start_draw_position_y)
 
 # Часть 1.
 # Написать функции рисования равносторонних геометрических фигур:
@@ -26,8 +45,24 @@ import simple_draw as sd
 # sd.get_vector()
 # sd.line()
 # Результат решения см lesson_004/results/exercise_01_shapes.jpg
+# start_draw_position, side_length, figure_color
 
-# TODO здесь ваш код
+
+def draw_triangle():
+
+    # first_point_x, first_point_y, line_length
+    def generate_point_list():
+        point_list = [triangle_start_draw_position]
+        second_point = sd.get_point(triangle_start_draw_position_x + random.choice((-random_value, random_value)),
+                                    triangle_start_draw_position_y + random.choice((-random_value, random_value)))
+        point_list.append(second_point)
+        return point_list
+    sd.lines(generate_point_list(), default_color, True)
+
+
+draw_triangle()
+sd.time.sleep(1)
+
 
 # Часть 1-бис.
 # Попробуйте прикинуть обьем работы, если нужно будет внести изменения в этот код.
