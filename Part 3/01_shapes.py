@@ -8,6 +8,7 @@ sd.resolution = (800, 800)
 
 default_color = sd.COLOR_RED
 random_value = 50
+triangle_side_length = 50
 triangle_start_draw_position_x = 100
 triangle_start_draw_position_y = 100
 square_start_draw_position_x = 700
@@ -48,20 +49,33 @@ hexagon_start_draw_position = sd.get_point(hexagon_start_draw_position_x, hexago
 # start_draw_position, side_length, figure_color
 
 
-def draw_triangle():
+class Triangle:
+    def draw_triangle(self, start_draw_point_x, start_draw_point_y, side_length):
+        triangle_start_draw_point = sd.get_point(triangle_start_draw_position_x, triangle_start_draw_position_y)
+        sd.lines(Triangle.generate_point_list_for_draw(self, triangle_start_draw_point, start_draw_point_x,
+                                                       start_draw_point_y, triangle_side_length), closed=True)
 
-    # first_point_x, first_point_y, line_length
-    def generate_point_list():
-        point_list = [triangle_start_draw_position]
-        second_point = sd.get_point(triangle_start_draw_position_x + random.choice((-random_value, random_value)),
-                                    triangle_start_draw_position_y + random.choice((-random_value, random_value)))
+    @staticmethod
+    def generate_point_list_for_draw(self, start_draw_point, start_draw_point_x, start_draw_point_y, side_length):
+        point_list = [start_draw_point]
+        second_point_x = start_draw_point_x + side_length
+        second_point_y = start_draw_point_y + side_length
+        second_point = sd.get_point(second_point_x, second_point_y)
         point_list.append(second_point)
+        third_point_x = second_point_x + side_length
+        third_point_y = second_point_y - side_length
+        third_point = sd.get_point(third_point_x, third_point_y)
+        point_list.append(third_point)
         return point_list
-    sd.lines(generate_point_list(), default_color, True)
+
+    @staticmethod
+    def calculate_hypotenuse_length(self, first_side_length, second_side_length):
+        return round(pow(pow(first_side_length, 2) + pow(second_side_length, 2), 0.5), 1)
 
 
-draw_triangle()
-sd.time.sleep(1)
+triangle = Triangle
+triangle.draw_triangle(triangle, triangle_start_draw_position_x, triangle_start_draw_position_y, triangle_side_length)
+print(triangle.calculate_hypotenuse_length(triangle, 20, 20))
 
 
 # Часть 1-бис.
